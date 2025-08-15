@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: rpg-backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT src.main:app"
+    envVars:
+      - key: DATABASE_URL
+        value: "sqlite:///src/database/app.db"
+      - key: SECRET_KEY
+        generateValue: true
+    autoDeploy: true
+    disk:
+      name: sqlite-data
+      mountPath: /home/ubuntu/rpg_backend/src/database
+      sizeGB: 1
+
