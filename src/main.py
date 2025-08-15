@@ -20,7 +20,7 @@ app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'sta
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # Habilitar CORS para todas as rotas
-CORS(app, supports_credentials=True, origins=["https://rpg-frontend-flame.vercel.app"])
+CORS(app, supports_credentials=True, origins=["https://rpg-frontend-flame.vercel.app"], allow_headers=["Content-Type", "Authorization"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 # Registrar blueprints
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
